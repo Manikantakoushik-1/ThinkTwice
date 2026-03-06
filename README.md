@@ -7,6 +7,30 @@
 
 ---
 
+## 🖥️ Web UI
+
+Launch the interactive Streamlit dashboard to demo ThinkTwice visually:
+
+```bash
+# Install dependencies (includes streamlit & plotly)
+pip install -r requirements.txt
+
+# Run the dashboard
+streamlit run ui/app.py
+```
+
+The dashboard opens at `http://localhost:8501` and offers three pages:
+
+| Page | Description |
+|------|-------------|
+| **🏠 Interactive Solver** | Enter a task, watch the Reflexion loop step-by-step (Attempt → Evaluate → Reflect → Retry) |
+| **📊 Benchmark Dashboard** | Compare Baseline (1 attempt) vs Reflexion across task sets with charts |
+| **🏗️ Architecture** | Visual explanation of every component and the Reflexion paper reference |
+
+Enter your API key in the sidebar (Gemini / Groq / HuggingFace), select max attempts, and solve any built-in or custom task.
+
+---
+
 ## Architecture
 
 ```
