@@ -89,7 +89,7 @@ All tasks are in `src/tasks/real_world.py` and use the standard `Task` + `TaskLo
 
 ---
 
-## 🖥️ Web UI
+## 🌐 Web Dashboard
 
 Launch the interactive Streamlit dashboard to demo ThinkTwice visually:
 
@@ -97,19 +97,31 @@ Launch the interactive Streamlit dashboard to demo ThinkTwice visually:
 # Install dependencies (includes streamlit & plotly)
 pip install -r requirements.txt
 
-# Run the dashboard
-streamlit run ui/app.py
+# Copy and configure your API key(s)
+cp .env.example .env
+# Edit .env — set at least one of: GEMINI_API_KEY, GROQ_API_KEY, HUGGINGFACE_API_KEY
+
+# Run the dashboard (root-level entry point)
+streamlit run web_ui.py
 ```
 
-The dashboard opens at `http://localhost:8501` and offers three pages:
+The dashboard opens at `http://localhost:8501` and has three tabs:
 
-| Page | Description |
-|------|-------------|
-| **🏠 Interactive Solver** | Enter a task, watch the Reflexion loop step-by-step (Attempt → Evaluate → Reflect → Retry) |
-| **📊 Benchmark Dashboard** | Compare Baseline (1 attempt) vs Reflexion across task sets with charts |
-| **🏗️ Architecture** | Visual explanation of every component and the Reflexion paper reference |
+| Tab | Description |
+|-----|-------------|
+| **🏠 Interactive Solver** | Select a task, click **Run Reflexion Loop**, and watch each Attempt → Evaluate → Reflect → Retry step live.  After completion, see a baseline vs reflexion side-by-side comparison. |
+| **📊 Batch Benchmark** | Run multiple tasks at once.  Compare Baseline (1 attempt) vs Reflexion accuracy in a table and interactive Plotly bar chart. |
+| **🏗️ How It Works** | Visual flow diagram, component descriptions, API provider reference table, and link to the Reflexion paper. |
 
-Enter your API key in the sidebar (Gemini / Groq / HuggingFace), select max attempts, and solve any built-in or custom task.
+**Features:**
+- 🔑 API key status detected automatically from env vars — no need to paste keys into the UI
+- ⚙️ Configurable max-attempts (1–5) and temperature sliders in the sidebar
+- 📊 Live progress bar during agent execution
+- 🎨 Color-coded attempt timeline (✅ green / ❌ red) with expandable reflections
+- 🆚 One-click baseline vs reflexion score comparison
+- 📈 Interactive Plotly bar charts for batch benchmarks
+
+> **Note:** API keys are read from your `.env` file (never entered in the browser). See [Free API Setup](#free-api-setup) below.
 
 ---
 
