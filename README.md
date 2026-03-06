@@ -7,6 +7,88 @@
 
 ---
 
+## 🎯 Real-World Showcase
+
+See the reflexion loop tackle **real interview problems** — from LRU Cache implementations to
+cascading-failure analysis and compound-growth calculations.
+
+```bash
+# Full showcase: 5 tasks across all categories
+python showcase.py
+
+# Quick demo (2 tasks)
+python showcase.py --quick
+
+# Focus on one category
+python showcase.py --category algorithms
+python showcase.py --category data_science
+python showcase.py --category system_design
+python showcase.py --category debugging
+python showcase.py --category business
+
+# Deeper reflection (5 attempts instead of 3)
+python showcase.py --max-attempts 5
+
+# Show full solutions
+python showcase.py --verbose
+
+# Standard 3-task demo
+python main.py
+
+# Jump straight to showcase from main.py
+python main.py --showcase
+```
+
+Results are saved to `results/showcase_results.json` after each run.
+
+---
+
+## 📊 What Makes This Different
+
+Most LLM demos run a problem once. ThinkTwice runs it in a **Baseline → Reflect → Retry** loop and
+shows you exactly where (and why) reflection made the difference.
+
+```
+Baseline  (1 attempt)    ✗  incorrect  score=0.00
+Reflexion (3 attempts)   ✓  CORRECT    score=1.00   🚀 Reflection loop FIXED this task!
+
+  💡 Reflection insights:
+    [1] Off-by-one in loop range — should iterate n-1 times not n
+        → Strategy: Change range(n) to range(n-1) and return a directly
+```
+
+The showcase script prints a side-by-side comparison table at the end:
+
+```
+╭──────────────────────────────────────────────────────────╮
+│  📊  Baseline vs Reflexion — Summary                     │
+├──────────────────┬──────────────┬────────┬───────┬───────┤
+│ Task             │ Category     │ Base   │ Refx  │ Impr? │
+├──────────────────┼──────────────┼────────┼───────┼───────┤
+│ rw_ds_002        │ 📊 Data Sci  │   ✗    │   ✓   │ 🚀 YES│
+│ rw_algo_001      │ ⚡ Algorithm  │   ✗    │   ✓   │ 🚀 YES│
+│ rw_sd_002        │ 🏗️  Sys Des  │   ✓    │   ✓   │  —    │
+│ rw_dbg_001       │ 🐛 Debug     │   ✗    │   ✓   │ 🚀 YES│
+│ rw_biz_001       │ 💼 Business  │   ✗    │   ✓   │ 🚀 YES│
+╰──────────────────┴──────────────┴────────┴───────┴───────╯
+```
+
+---
+
+## 🗂️ Real-World Task Categories
+
+| Category | Task Type | Examples |
+|----------|-----------|---------|
+| **📊 Data Science** | `math` | A/B test analysis, runway calculations, storage sizing |
+| **⚡ Algorithms** | `code` | LRU Cache, merge intervals, valid brackets |
+| **🏗️ System Design** | `logic` | URL shortener design, cascading failures, feed architecture |
+| **🐛 Debugging** | `code` | Off-by-one bugs, two-sum fix, in-place dedup |
+| **💼 Business Math** | `math` | Compound interest, tax brackets, LTV:CAC ratio |
+
+All tasks are in `src/tasks/real_world.py` and use the standard `Task` + `TaskLoader` interface.
+
+---
+
 ## 🖥️ Web UI
 
 Launch the interactive Streamlit dashboard to demo ThinkTwice visually:
@@ -126,9 +208,9 @@ python experiments/analyze_results.py
 
 | Type | Description | Evaluation |
 |------|-------------|------------|
-| **math** | GSM8K-style word problems | Exact numeric match |
-| **code** | HumanEval-style Python functions | Code execution + test assertions |
-| **logic** | Classic constraint puzzles | LLM-as-judge |
+| **math** | GSM8K-style word problems + business maths | Exact numeric match |
+| **code** | HumanEval-style + interview coding problems | Code execution + test assertions |
+| **logic** | Classic constraint puzzles + system design | LLM-as-judge |
 | **planning** | Open-ended system design | LLM-as-judge |
 
 ---
@@ -137,7 +219,8 @@ python experiments/analyze_results.py
 
 ```
 ThinkTwice/
-├── main.py                      # Quick demo script
+├── main.py                      # Quick demo script (--showcase flag)
+├── showcase.py                  # Real-world showcase demo ← NEW
 ├── requirements.txt
 ├── setup.py
 ├── .env.example                 # API key template
@@ -151,10 +234,11 @@ ThinkTwice/
 │   │   └── episodic_memory.py   # Reflection storage
 │   ├── tasks/
 │   │   ├── base_task.py
-│   │   ├── math_reasoning.py
-│   │   ├── code_generation.py
+│   │   ├── math_reasoning.py    # GSM8K-style (10 tasks)
+│   │   ├── code_generation.py   # HumanEval-style (7 tasks)
 │   │   ├── logic_puzzles.py
-│   │   └── planning.py
+│   │   ├── planning.py
+│   │   └── real_world.py        # Real-world tasks (5 categories) ← NEW
 │   └── utils/
 │       ├── llm_client.py        # Multi-provider LLM client
 │       └── logger.py

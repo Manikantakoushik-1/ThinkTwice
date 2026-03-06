@@ -57,6 +57,65 @@ _BUILTIN_TASKS = [
         ),
         "expected_answer": "10",
     },
+    # ── Harder tasks designed to trigger the reflection loop ──────────────
+    {
+        "id": "math_006",
+        "description": (
+            "A store is having a sale. A jacket originally costs $120. "
+            "The store first applies a 25% discount, then applies an additional 10% "
+            "discount on the already-discounted price. "
+            "A customer incorrectly adds the discounts and thinks they get 35% off. "
+            "How much MORE does the customer actually pay compared to what they "
+            "expected? (i.e., what is the difference between the 35%-off price and "
+            "the actual price after sequential discounts?)"
+        ),
+        "expected_answer": "3",
+    },
+    {
+        "id": "math_007",
+        "description": (
+            "A train leaves City A at 8:00 AM travelling toward City B at 60 mph. "
+            "Another train leaves City B at 10:00 AM travelling toward City A at 90 mph. "
+            "The cities are 390 miles apart. "
+            "Note: A bird flying back and forth between the trains is irrelevant — ignore it. "
+            "At what time do the two trains meet? Give the answer as the number of hours "
+            "after 8:00 AM (as a decimal if needed)."
+        ),
+        "expected_answer": "3.8",
+    },
+    {
+        "id": "math_008",
+        "description": (
+            "A square field has a perimeter of 240 metres. "
+            "A farmer wants to fence a rectangular section inside the field "
+            "that uses one full side of the square as one of its sides, "
+            "and whose area is exactly half the area of the square field. "
+            "What must the length (in metres) of the side of the rectangle "
+            "that is perpendicular to the square's side be?"
+        ),
+        "expected_answer": "30",
+    },
+    {
+        "id": "math_009",
+        "description": (
+            "Company X's revenue grew 20% in Year 1, then declined 20% in Year 2, "
+            "then grew 20% again in Year 3. "
+            "If the starting revenue was $1,000,000, what is the revenue at the end "
+            "of Year 3? Give the answer in dollars as the FINAL ANSWER."
+        ),
+        "expected_answer": "1152000",
+    },
+    {
+        "id": "math_010",
+        "description": (
+            "A recipe requires 2.5 cups of flour for every 1.5 cups of sugar. "
+            "You have exactly 10 cups of flour and 7 cups of sugar. "
+            "What is the maximum number of complete batches you can make, "
+            "given both ingredients must be used in the correct ratio? "
+            "(You cannot use partial batches.)"
+        ),
+        "expected_answer": "4",
+    },
 ]
 
 
